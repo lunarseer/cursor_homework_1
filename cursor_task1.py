@@ -81,11 +81,14 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-    if not isinstance(first_value, int):
-        first_value = int(first_value)
-    if not isinstance(second_value, int):
-        second_value = int(second_value)
-    return first_value * second_value
+    try:
+        if not isinstance(first_value, int):
+            first_value = int(first_value)
+        if not isinstance(second_value, int):
+            second_value = int(second_value)
+        return first_value * second_value
+    except ValueError:
+        raise OurAwesomeException
 
 
 
@@ -145,7 +148,7 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    return {i + 1: s for i, s in enumerate("abcdefghijklmnopqrstuvwxyz")}
+    return {i: s for i, s in enumerate("abcdefghijklmnopqrstuvwxyz", 1)}
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -157,6 +160,7 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    return sorted(data)
+    data.sort()
+    return data
 
 
