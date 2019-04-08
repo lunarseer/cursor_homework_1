@@ -142,7 +142,7 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
 
 def alphabet() -> dict:
     """
-    Create dict which keys is alphabetic characters. And values their number in alphabet
+    Create dict which keys is numbers of alphabet characters. And values their string value
     Notes You could see an implementaion of this one in test, but create another one
     Examples:
         alphabet()
@@ -151,7 +151,7 @@ def alphabet() -> dict:
     return {i: s for i, s in enumerate("abcdefghijklmnopqrstuvwxyz", 1)}
 
 
-def simple_sort(data: List[int]) -> List[list]:
+def simple_sort(data: List[int]) -> List[int]:
     """
     Sort list of ints without using built-in methods.
     Examples:
@@ -160,7 +160,13 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    data.sort()
+    for i in range(len(data)):
+        min_i = i
+        for ii in range(i+1, len(data)):
+            if data[min_i] > data[ii]:
+                min_i = ii
+        data[i], data[min_i] = data[min_i], data[i]
+
     return data
 
 
